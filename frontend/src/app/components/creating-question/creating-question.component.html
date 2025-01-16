@@ -1,0 +1,58 @@
+<div class="question-container">
+    <div class="question-text">
+        <span class="question-num">{{questionIdx + 1}}.{{question.optional ? '' : '*'}}</span>
+        <mat-form-field appearance="fill">
+            <mat-label>Nová otázka</mat-label>
+            <input matInput type="text" required [(ngModel)]="question.questionText" />
+        </mat-form-field>
+        <mat-icon fontIcon="more_vert" [matMenuTriggerFor]="menu"></mat-icon>
+        <mat-menu #menu>
+            <button mat-menu-item (click)="setOptional()">{{question.optional ? 'Povinná' : 'Dobrovoľna'}} otázka</button>
+            <button mat-menu-item (click)="setTypeToSingleChoice()" *ngIf="isCreatingSurvey" >Jedna možnosť</button>
+            <button mat-menu-item (click)="setTypeToMultipleChoice()" *ngIf="isCreatingSurvey" >Viacero možností</button>
+            <button mat-menu-item (click)="setTypeToScale()" *ngIf="isCreatingSurvey" >Stupnica</button>
+            <button mat-menu-item (click)="setTypeToFreeAnswer()" *ngIf="isCreatingSurvey" >Voľná odpoveď</button>
+        </mat-menu>
+    </div>
+
+    <div class="answers-container">
+        <div *ngIf="question.questionType === 0" class="single-answer question-with-options"> <!-- single choice -->
+            <div class="option" *ngFor="let answer of question.answers; index as i">
+                <div class="option-circle"></div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Nová možnosť</mat-label>
+                    <input matInput type="text" required [(ngModel)]="question.answers[i].answerText"/>
+                </mat-form-field>
+                <img src="assets/RemoveOption.png" alt="" (click)="removeAnswer(i)">
+            </div>
+        </div>
+        <div *ngIf="question.questionType === 1" class="multi-answer question-with-options"> <!-- multiple choice -->
+            <div class="option" *ngFor="let answer of question.answers; index as i">
+                <div class="option-square"></div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Nová možnosť</mat-label>
+                    <input matInput type="text" required [(ngModel)]="question.answers[i].answerText"/>
+                </mat-form-field>
+                <img src="assets/RemoveOption.png" alt="" (click)="removeAnswer(i)">
+            </div>
+        </div>
+        <div *ngIf="question.questionType === 2" class="scale-answer"> <!-- scale -->
+            <div *ngFor="let answer of question.answers; index as i" class="scale-option">
+                {{i + 1}}
+            </div>
+        </div>
+        <div *ngIf="question.questionType === 3" class="free-answer"> <!-- free answer -->
+            <div class="answer">
+                <mat-form-field appearance="fill">
+                    <mat-label>Voľná odpoveď</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="question-footer">
+        <img src="assets/AddOption.png" alt="" *ngIf="question.questionType === 0 || question.questionType === 1" (click)="addAnswer()">
+        <mat-icon fontIcon="delete_forever" (click)="remove()"></mat-icon>
+    </div>
+</div>

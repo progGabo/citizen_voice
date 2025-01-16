@@ -1,0 +1,22 @@
+<app-header></app-header>
+<main>
+    <div *ngIf="inProgress" class="in-progress container">
+        <mat-spinner></mat-spinner>
+        <h1>Prebieha potvrdzovanie podpisu</h1>
+    </div>
+    <div *ngIf="!inProgress && success" class="success container">
+        <mat-icon fontIcon="check_circle"></mat-icon>
+        <h1>Podpis petície bol potvrdený</h1>
+        <a href="/home">Návrat na hlavnú stránku</a>
+    </div>
+
+    <div *ngIf="!inProgress && !success && !alreadySigned" class="error container">
+        <mat-icon fontIcon="error"></mat-icon>
+        <h1>Nastala neočakávaná chyba pri potvrdzovaní podpisu</h1>
+    </div>
+
+    <div *ngIf="alreadySigned" class="error container">
+        <mat-icon fontIcon="error"></mat-icon>
+        <h1>Podpis ste už potvrdili</h1>
+    </div>
+</main>

@@ -1,0 +1,4 @@
+<div class="one-day-wrapper" [class.disabled]="disabled" [class.today]="isTodayDate()" [class.hasEvent]="hasEvent" (click)="handleClick()">
+    <span>{{getDate()}}</span>
+    <mat-icon *ngIf="hasEvent" fontIcon="local_activity"></mat-icon>
+</div>

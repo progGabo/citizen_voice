@@ -1,0 +1,71 @@
+.dialog-wrapper {
+    --mdc-protected-button-container-color: rgba(0, 0, 128, 0.8);
+    --mdc-protected-button-label-text-color: white;
+    max-width: 25vw;
+    min-width: 25vw;
+    @media screen and (max-width: 1300px) {
+      max-width: 50vw;
+    }
+    @media screen and (max-width: 600px) {
+      max-width: 80vw;
+    }
+    
+    .buttons-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      margin-bottom: 20px;
+      
+      mat-button-toggle {
+        width: 100%;
+      }
+    }
+  
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    button {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 20px auto;
+      max-width: 150px; 
+      margin-top: 15px;
+    }
+
+    mat-checkbox {
+      margin: 1rem 0;
+      display: block;
+      justify-content: left;
+    }
+
+    .spinner-wrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .registration-success-wrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: black;
+      text-align: center;
+      h1{
+        line-height: 35px;
+      }
+      mat-icon{
+        font-size: 78px;
+        width: fit-content;
+        height: fit-content;
+        color: green;
+      }
+    }
+}

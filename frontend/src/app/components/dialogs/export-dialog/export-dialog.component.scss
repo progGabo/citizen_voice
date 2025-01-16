@@ -1,0 +1,16 @@
+.export-dialog-wrapper{
+    mat-dialog-content{
+        display: flex;
+        flex-direction: column;
+
+        --mdc-checkbox-selected-focus-icon-color: #FF6E11;
+        --mdc-checkbox-selected-icon-color: #FF6E11;
+        --mdc-checkbox-selected-focus-state-layer-color: #ff6c11b0;
+        --mdc-checkbox-selected-hover-icon-color: #ff6c11b0;
+        --mdc-checkbox-selected-pressed-state-layer-color: #ff6c11b0;
+    }
+    .primary{
+        --mdc-protected-button-container-color: #FF6E11;
+        --mdc-protected-button-label-text-color: white;
+    }
+}

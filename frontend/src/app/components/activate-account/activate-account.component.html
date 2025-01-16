@@ -1,0 +1,20 @@
+<app-header></app-header>
+
+<main>
+    <div *ngIf="inProgress" class="in-progress container">
+        <mat-spinner></mat-spinner>
+        <h1>Prebieha aktivácia účtu</h1>
+    </div>
+    <div *ngIf="!inProgress && success && !newCodeSent" class="success container">
+        <mat-icon fontIcon="check_circle"></mat-icon>
+        <h1>Účet bol aktivovaný</h1>
+        <h2 *ngIf="isOrganization">Je potrebné schválenie administrátorom. O stave schválenia vás budeme informovať mailom.</h2>
+        <a href="/home">Návrat na hlavnú stránku</a>
+    </div>
+
+    <div *ngIf="!inProgress && !success && !newCodeSent" class="error container">
+        <mat-icon fontIcon="error"></mat-icon>
+        <h1>Nastala neočakávaná chyba</h1>
+        <h2>Ak sa neviete príhlásiť zopakujte registráciu</h2>
+    </div>
+</main>

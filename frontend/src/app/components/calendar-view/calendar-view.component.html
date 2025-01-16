@@ -1,0 +1,52 @@
+<div class="calendar-view-wrapper">
+
+    <div class="calendar-view-container">
+        <div class="calendar-header">
+
+            <mat-icon fontIcon="arrow_back_ios" (click)="prevMonth()"></mat-icon>
+            <div class="calendar-header-selection">
+                <button mat-button [matMenuTriggerFor]="menu">{{monthsMap[selectedMonth]}}</button>
+                <mat-menu #menu>
+                    <button mat-menu-item *ngFor="let month of monthsMap | keyvalue:onCompare" (click)="setSelectedMonth(month.key)">{{month.value}}</button>
+                </mat-menu>
+                <button mat-button [matMenuTriggerFor]="year">{{selectedYear}}</button>
+                <mat-menu #year>
+                    <button mat-menu-item *ngFor="let year of getYearsToGenerate()" (click)="setSelectedYear(year)">{{year}}</button>
+                </mat-menu>
+                <mat-form-field>
+                    <mat-label>Lokácia (mesto)</mat-label>
+                    <input type="text"
+                       matInput
+                       [formControl]="formControl"
+                       [matAutocomplete]="auto">
+
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getLocName">
+                        <mat-option *ngFor="let loc of filteredLocations | async" [value]="loc">{{loc.name}}</mat-option>
+                    </mat-autocomplete>
+
+                
+                </mat-form-field>
+                <!-- <app-city-selector [(selected)]="selectedCity"></app-city-selector> -->
+            </div>
+            <mat-icon fontIcon="arrow_forward_ios" (click)="nextMonth()"></mat-icon>
+            
+
+
+        </div>
+        <div class="calendar-days">    
+            <div class="day-of-week">po</div>
+            <div class="day-of-week">ut</div>
+            <div class="day-of-week">str</div>
+            <div class="day-of-week">štv</div>
+            <div class="day-of-week">pia</div>
+            <div class="day-of-week">so</div>
+            <div class="day-of-week">ne</div>
+            
+            <app-one-day *ngFor="let date of getStartPadding(); index as i" [date]="date" [events]="events" [disabled]="true"></app-one-day>
+            <app-one-day *ngFor="let date of getAllDatesInMonth(); index as i" [date]="date" [events]="events"></app-one-day>
+            <app-one-day *ngFor="let date of getEndPadding(); index as i" [date]="date" [events]="events" [disabled]="true"></app-one-day>
+
+        </div>
+    </div>
+
+</div>

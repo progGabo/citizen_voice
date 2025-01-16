@@ -1,0 +1,34 @@
+<div class="carousel-main">
+  <div class="carousel-wrapper">
+    <div class="carousel-container">
+      <div class="carousel-slide" [class.animate]="isAnimated">
+        <div class="carousel-header">
+          <h2>{{ slides[currentSlideIndex].title }}</h2>
+          <h4>{{ slides[currentSlideIndex].author }}</h4>
+        </div>
+        <p>{{ getText(slides[currentSlideIndex].text) }}</p>
+         <a class="carousel-link" (click)="openLinkNewTab()">{{buttonText}}</a> 
+      </div>
+      <div class="next-slide" [class.next-slide-animate]="isAnimated">
+        <div class="carousel-header">
+          <h2>{{ slides[currentSlideIndex].title }}</h2>
+          <h4>{{ slides[currentSlideIndex].author }}</h4>
+        </div>
+        <p>{{ getText(slides[currentSlideIndex].text) }}</p>
+        <a class="carousel-link">{{buttonText}}</a>
+      </div>
+    </div>
+
+    <!-- Navigačné tlačidlá -->
+    <div *ngIf="slides.length > 1" class="carousel-navigation">
+      <mat-icon fontIcon="arrow_back_ios" (click)="goToPrevSlide()"></mat-icon>
+      <div class="dots">
+        <div *ngFor="let s of slides; let i = index">
+          <div *ngIf="i == currentSlideIndex" class="dot-full dot"></div>
+          <div *ngIf="i != currentSlideIndex" class="dot"></div>
+        </div>
+      </div>
+      <mat-icon fontIcon="arrow_forward_ios" (click)="goToNextSlide()"></mat-icon>
+    </div>
+  </div>
+</div>

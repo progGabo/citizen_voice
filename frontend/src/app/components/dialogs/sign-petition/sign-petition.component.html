@@ -1,0 +1,36 @@
+<div class="dialog-wrapper">
+    <div class="dialog-header">
+        <h2 mat-dialog-title>Podpísať petíciu</h2>
+        <mat-icon fontIcon="cancel" (click)="closeDialog()"></mat-icon>
+    </div>
+    <mat-dialog-content>
+        <div class="disabled-form">
+            <mat-form-field>
+                <mat-label>Meno</mat-label>
+                <input type="text" matInput disabled [(ngModel)]="data.firstName">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Priezvisko</mat-label>
+                <input type="text" matInput disabled [(ngModel)]="data.lastName">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Mesto</mat-label>
+                <input type="text" matInput disabled [(ngModel)]="data.city">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>E-mail</mat-label>
+                <input type="text" matInput disabled [(ngModel)]="data.mail">
+            </mat-form-field>
+        </div>
+        <div class="email-text">
+            <p>Pre úspešne podpísanie petície je potrebné overenie e-mailom, ktorý doručíme do niekoľkých minút.</p>
+        </div>
+        <div class="gdpr">Podpísaním petície udeľujete súhlas so spracovaním osobných údajov podľa zásad GDPR.</div>
+    </mat-dialog-content>
+    <mat-dialog-actions [align]="'center'">
+        <button mat-raised-button (click)="signPetition()">Podpísať</button>
+    </mat-dialog-actions>
+</div>

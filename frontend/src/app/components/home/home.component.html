@@ -1,0 +1,92 @@
+<main class="main">
+    <mat-drawer-container class="container" [hasBackdrop]="false">
+      <mat-drawer mode="over" [opened]="sideNavOpened" [style.background-color]="'rgba(0, 0, 128, 0.75)'">
+        <div class="sidenav-container">
+          <div class="sidenav-content">
+            <a (click)="addEvent()">Pridať udalosť</a>
+            <a href="create_article">Pridať článok</a>
+            <a href="create_voting">Vytvoriť hlasovanie</a>
+            <a href="create_survey">Vytvoriť prieskum</a>
+          </div>
+          <mat-icon aria-hidden="false" aria-label="Search icon" fontIcon="arrow_forward_ios" (click)="closeSideNav()"></mat-icon>
+        </div>
+  
+      </mat-drawer>
+      <mat-drawer-content>
+        <app-header [(isAdmin)]="isAdmin" [(isLoggedIn)]="isLoggedIn" [logoClickFunction]="goToHomePageFunc" [(search)]="searchFilter"></app-header>
+        <div *ngIf="isAdmin && !sideNavOpened" class="slide-wrapper">
+          <mat-icon aria-hidden="false" aria-label="Search icon" fontIcon="arrow_forward_ios" (click)="openSideNav()"></mat-icon>
+        </div>
+        <mat-tab-group (selectedTabChange)="tabChange($event)" [selectedIndex]="currentTab">
+          
+          <mat-tab label="Hlavná stránka" class="home-hidden-tab">
+            <ng-template matTabContent>
+              <div class="main-carousel-container">
+                <div class="wrapper">
+                  <h2>Najnovšie aktuality</h2>
+                  <h3 *ngIf="articleCarouselData.length === 0">Nedostupné</h3>
+                </div>
+                <app-carousel *ngIf="articleCarouselData.length > 0" #articleCarousel [slides]="articleCarouselData" [linkPrefix]="'/article'" [buttonText]="'Prečítať článok'" [automaticSliding]="false" [automaticSlideIntervalMs]="5000"></app-carousel>
+              </div>
+              <div class="main-carousel-container">
+                <div class="wrapper">
+                  <h2>Najnovšie petície</h2>
+                  <h3 *ngIf="petitionCarouselData.length === 0">Nedostupné</h3>
+                </div>
+                <app-carousel *ngIf="petitionCarouselData.length > 0" 
+                              [slides]="petitionCarouselData" 
+                              [linkPrefix]="'/petition'" 
+                              [buttonText]="'Prejsť na petíciu'">
+                </app-carousel>
+              </div>
+              <div class="main-carousel-container">
+                <div class="wrapper">
+                  <h2>Najnovšie prieskumy</h2>
+                  <h3 *ngIf="surveyCarouselData.length === 0">Nedostupné</h3>
+                </div>
+                <app-carousel *ngIf="surveyCarouselData.length > 0" 
+                              [slides]="surveyCarouselData" 
+                              [linkPrefix]="'/fill_out/survey'" 
+                              [buttonText]="'Prejsť na prieskum'" 
+                              [loggedInMandatory]="true"
+                              [errorText]="'Pred vyplnením prieskumu sa najprv prihláste'">
+                </app-carousel>
+              </div>
+              <div class="main-carousel-container">
+                <div class="wrapper">
+                  <h2>Najnovšie hlasovania</h2>
+                  <h3 *ngIf="votingCarouselData.length === 0">Nedostupné</h3>
+                </div>
+                <app-carousel *ngIf="votingCarouselData.length > 0" 
+                              [slides]="votingCarouselData" 
+                              [linkPrefix]="'/fill_out/voting'" 
+                              [buttonText]="'Prejsť na hlasovanie'" 
+                              [loggedInMandatory]="true"
+                              [errorText]="'Pred vyplnením hlasovania sa najprv prihláste'">
+                </app-carousel>
+              </div>
+            </ng-template>
+          </mat-tab>
+          
+          <mat-tab label="Aktuality">
+             <app-articles [(selectedSort)]="articlesSearch"></app-articles>
+          </mat-tab>
+          
+          <mat-tab label="Petície">
+            <app-petitions [isLoggedIn]="isLoggedIn" [(lastSelectedOption)]="petitionsSearch"></app-petitions>
+          </mat-tab>
+          
+          <mat-tab label="Prieskumy a hlasovania">
+            <app-votings-surveys [(filterText)]="votingsSurveysSearch"></app-votings-surveys>
+          </mat-tab>
+
+          <mat-tab label="Kalendár ">
+            <ng-template matTabContent>
+              <app-calendar-view></app-calendar-view>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </main>
+  

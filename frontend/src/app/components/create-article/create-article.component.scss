@@ -1,0 +1,56 @@
+.create-article-main{
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    .error{
+        text-align: center;
+    }
+
+    .editor-wrapper{
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+        .header{
+            display: flex;
+            justify-content: center;
+            margin-bottom: .5rem;
+            h2{
+                margin: 0 .25rem;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            .active{
+                color: #FF6E11;
+                &:hover{
+                    cursor: default;
+                }
+            }
+        }
+        .ck-editor__editable_inline {
+            min-height: 500px;
+        }
+        .article-title-wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            mat-form-field{
+                width: 80%;
+            }
+            .city-selector-wrapper{
+                width: 80%;
+                .city-selector{
+                    width: 100%;
+                }
+            }
+        }
+        .button-cluster{
+            --mdc-protected-button-container-color: rgba(0, 0, 128, 0.8);
+            --mdc-protected-button-label-text-color: white;
+            margin-top: .5rem;
+            display: flex;
+            justify-content: end;
+        }
+    }
+}

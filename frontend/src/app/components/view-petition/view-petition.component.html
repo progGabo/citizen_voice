@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="view-petition-main">
+    <div class="petition-wrapper">
+        <div class="petition-header">
+            <h1>{{petitionToRender.title}}</h1>
+            <h3>Počet podpísaných: {{petitionToRender.numberOfSignees}}</h3>
+        </div>
+        <div class="petition-text-wrapper">
+            <ckeditor *ngIf="isLayoutReady" 
+                      [editor]="Editor" 
+                      (ready)="previewReady($event)" 
+                      [config]="config"/>
+            <div class="right-panel">
+                <h3>Autor: {{petitionToRender.author}}</h3>
+                <button mat-raised-button *ngIf="!alreadySigned" (click)="signPetition()">Podpísať petíciu</button>
+                <div class="petition-signed" *ngIf="alreadySigned && signatureValid">
+                    <p><b>Petícia podpísaná</b></p>
+                    <mat-icon fontIcon="check_circle"></mat-icon>
+                </div>
+                <div class="petition-signed" *ngIf="alreadySigned && !signatureValid">
+                    <p><b>Podpis potvrďte kliknutím na odkaz v maily</b></p>
+                    <mat-icon fontIcon="warning" class="warning"></mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-loading-spinner *ngIf="loadingInProgress" [displayText]="'Načítavam petíciu'"></app-loading-spinner>
+</div>

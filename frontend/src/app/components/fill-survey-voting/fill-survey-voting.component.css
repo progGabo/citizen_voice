@@ -1,0 +1,23 @@
+.fill-voting-survey-container {
+  font-family: "Roboto", "sans-serif";
+}
+.fill-voting-survey-container .main-title-container {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: x-large;
+}
+.fill-voting-survey-container .questions-wrapper {
+  border: 1px solid #FF6E11;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+.fill-voting-survey-container .questions-wrapper .question {
+  width: 100%;
+}
+/*# sourceMappingURL=fill-survey-voting.component.css.map */

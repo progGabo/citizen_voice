@@ -1,0 +1,54 @@
+.view-petition-main{
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .petition-wrapper{
+        border-radius: 5px;       
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+        padding: 1rem;
+        .petition-header{
+            text-align: center;
+            display: grid;
+            grid-template-columns: 75% 25%;
+            h3{
+                font-weight: 400;
+                justify-self: center;
+                align-self: center;
+            }        
+            border-bottom: 4px solid #FF6E11;
+        }
+        .petition-text-wrapper{
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: 75% 25%;
+            .ck-editor__editable[contenteditable="false"] {
+                border: 0px; 
+            }
+            .ck-sticky-panel__content{
+                border: 0px solid !important;
+            }
+            .right-panel{
+                text-align: center;
+                --mdc-protected-button-container-color: rgba(0, 0, 128, 0.8);
+                --mdc-protected-button-label-text-color: white;
+                .petition-signed{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    mat-icon{
+                        color: green;
+                        margin-left: .5rem;
+                    }
+                    .warning{
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}

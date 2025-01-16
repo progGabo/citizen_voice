@@ -1,0 +1,10 @@
+<div class="comment-wrapper">
+    <div class="comment-header">
+        <h3>{{comment.author}}</h3>
+        <p *ngIf="isAuthorComment"> - Autor</p>
+    </div>
+    <div class="comment-text">
+        <p>{{comment.text}}</p>
+    </div>
+    <div class="divider" *ngIf="!isLastComment"></div>
+</div>

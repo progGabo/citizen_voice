@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="create-article-main">
+    <div *ngIf="!loggedIn" class="not-logged-in error">
+        <h1>Pre pokračovanie sa musíte prihlásiť!</h1>
+        <span>Po prihlásení obnovte stránku</span>
+    </div>
+    <div *ngIf="loggedIn && !isAdmin && creatingArticle" class="not-admin error">
+        <h1>Nemáte práva na vytváranie článkov!</h1>
+    </div>
+
+    <div *ngIf="showEditor" class="editor-wrapper">
+        <div class="header">
+            <h2 [class.active]= "creatingArticle" (click)="changeMode('article')">Nový článok</h2>
+            <h2>/</h2>
+            <h2 [class.active]= "!creatingArticle" (click)="changeMode('petition')">Nová petícia</h2>
+        </div>
+        <div class="article-title-wrapper">
+            <mat-form-field>
+                <mat-label>Názov {{creatingArticle ? 'článku' : 'petície'}}</mat-label>
+                <input matInput type="text" [(ngModel)]="title">
+            </mat-form-field>
+            <!-- <mat-form-field *ngIf="!creatingArticle">
+                <mat-label>Požadovaný počet podpisov</mat-label>
+                <input matInput type="number" [(ngModel)]="signeeCount">
+            </mat-form-field> -->
+            <div *ngIf="!creatingArticle" class="city-selector-wrapper">
+                <mat-form-field class="city-selector">
+                    <mat-label>Lokácia (mesto)</mat-label>
+                    <input type="text"
+                       matInput
+                       [formControl]="formControl"
+                       [matAutocomplete]="auto">
+
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getLocName">
+                        <mat-option *ngFor="let loc of filteredLocations | async" [value]="loc">{{loc.name}}</mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="editor">
+            <ckeditor *ngIf="isLayoutReady" [editor]="Editor" [config]="config" (ready)="onReady($event)" [(ngModel)]="editorData"/>
+        </div>
+        <div class="button-cluster">
+            <button mat-raised-button (click)="handleSaveButton()">Uložiť</button>
+        </div>
+    </div>
+
+    <app-loading-spinner *ngIf="sendingInProgress" [displayText]="creatingArticle ? 'Nahrávam článok' : 'Nahrávam petíciu'"></app-loading-spinner>
+
+</div>

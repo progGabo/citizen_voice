@@ -1,0 +1,95 @@
+main{
+    height: 100vh;
+    width: 100vw;
+    font-family: "Roboto", 'sans-serif';
+    .container{
+        height: 100%;
+        .slide-wrapper{
+            position: fixed;
+            left: 0;
+            top: 0;
+            //bottom: 0;
+            height: 100vh;
+            width: 25px;
+            background-color: rgba(0, 0, 128, .75);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #FF6E11;
+            z-index: 9999;
+            @media screen and (max-width: 600px) {
+                display: none;
+            }
+        }
+        mat-icon{
+            color: #FF6E11;
+            font-weight: 700;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        mat-drawer{
+            .sidenav-container{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 100%;
+                .sidenav-content{
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 1.5rem;
+                    a{
+                        color: #FF6E11;
+                        text-decoration: none;
+                        margin: .5rem;
+                        font-family: "Roboto", 'sans-serif';
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                }
+                mat-icon{
+                    transform: rotateY(180deg);
+                    margin-right: 1rem;
+                    margin-left: 1.5rem;
+                }
+            }
+        }
+        mat-drawer-content{
+            height: 100%;
+            mat-tab-group{
+                z-index: 2000;
+                .main-carousel-container{
+                   .wrapper{
+                    text-align: center;
+                    h2{
+                        margin-bottom: 0;
+                    }
+                   }
+                }
+            }
+        }
+    }
+}
+
+:host ::ng-deep .mat-mdc-tab-header {
+    top: 76px; //height of header
+    z-index: 1000; 
+    position: sticky;
+    position: -webkit-sticky;
+    background-color: #fafafa;
+    @media screen and (max-width: 600px){
+        z-index: 10000;
+        top: 132px;
+    }
+}
+
+// hide first tab
+:host ::ng-deep .mdc-tab:first-child{
+    display: none;
+}
+/* 
+:host ::ng-deep .mat-mdc-tab-label-container {
+    overflow: scroll;
+} */

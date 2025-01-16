@@ -1,0 +1,99 @@
+<div class="dialog-wrapper">
+  <img src="assets/Logo.png" alt="" class="logo">
+  <mat-button-toggle-group
+    class="buttons-wrapper"
+    name="loginRegisterToggle"
+    aria-label="Login/Register"
+    [hideSingleSelectionIndicator]="true"
+    (change)="onToggleChange($event)">
+    <mat-button-toggle value="Login">Prihlásenie</mat-button-toggle>
+    <mat-button-toggle value="Register">Registrácia</mat-button-toggle>
+  </mat-button-toggle-group>
+
+    
+    <mat-dialog-content>
+      
+      <!--Login-->
+      <form *ngIf="isLogin" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          <mat-error *ngIf="loginForm.get('email')?.invalid">Zadajte valídny tvar emailu</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Heslo</mat-label>
+          <input matInput formControlName="password" type="password" required />
+          <mat-error *ngIf="loginForm.get('password')?.invalid">Heslo má minimálne 4 znaky</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Prihlásiť sa</button>
+      </form>
+
+
+      
+
+      
+      <!--Register-->
+      <form *ngIf="!isLogin && !registrationInProgress" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <mat-form-field appearance="fill">
+          <mat-label>Meno</mat-label>
+          <input matInput formControlName="firstName" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Priezvisko</mat-label>
+          <input matInput formControlName="lastName" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          <mat-error *ngIf="registerForm.get('email')?.invalid">Zadajte valídny tvar emailu</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Heslo</mat-label>
+          <input matInput formControlName="password" type="password" required />
+          <mat-error *ngIf="registerForm.get('password')?.invalid">Heslo musí mať minimálne 4 znaky</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Potvrdiť heslo</mat-label>
+          <input matInput formControlName="confirm_password" type="password" required />
+          <mat-error  *ngIf="registerForm.get('confirm_password')?.hasError('passwordsMismatch')">Heslá sa nezhodujú</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Dátum narodenia</mat-label>
+          <input matInput formControlName="dateOfBirth" type="date" required />
+          <mat-error  *ngIf="registerForm.get('dateOfBirth')?.hasError('invalidDate')">Neplatný dátum narodenia</mat-error>
+        </mat-form-field>
+
+        <!-- Checkbox -->
+        <mat-checkbox formControlName="receiveNotifications" color="primary">
+          Chcem dostávať upozornenia (neskôr to môžete zmeniť)
+        </mat-checkbox>
+        
+        <mat-checkbox formControlName="registerAsOrg" color="primary">
+          Chcem sa zaregistrovať ako predstaviteľ mesta/politik
+        </mat-checkbox>
+
+        <button mat-raised-button color="primary" type="submit">Zaregistrovať sa</button>
+      </form>
+
+      <div *ngIf="!isLogin && registrationInProgress && !registrationSuccess" class="spinner-wrapper">
+        <mat-spinner></mat-spinner>
+        <h3>Prebieha registrácia účtu</h3>
+      </div>
+
+      <div *ngIf="!isLogin && registrationSuccess" class="registration-success-wrapper">
+        <mat-icon fontIcon="check_circle"></mat-icon>
+        <h1>Registrácia prebehla úspešne!</h1>
+        <p>{{registrationSuccessText}}</p>
+      </div>
+
+
+    </mat-dialog-content>
+</div>

@@ -1,0 +1,13 @@
+<app-export-button [exportingSurvey]="true"
+                   [urlToFetchData]="'http://localhost:8080/api/survey/stats/1'"
+                   [urlToFetchQuestionare]="'http://localhost:8080/api/survey/1'"
+                   [urlToFetchAllData]="'http://localhost:8080/api/survey/1/all-answers'"
+></app-export-button>
+
+<app-petition-export-button [petitionId]="1"></app-petition-export-button>
+
+<app-export-button [exportingSurvey]="false"
+                   [urlToFetchData]="'http://localhost:8080/api/voting/2/stats'"
+                   [urlToFetchQuestionare]="'http://localhost:8080/api/voting/2'"
+                   [urlToFetchAllData]="'http://localhost:8080/api/voting/2/stats'"
+></app-export-button>

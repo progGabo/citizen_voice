@@ -1,0 +1,23 @@
+.error-dialog-wrapper {
+  max-width: 250px;
+  width: 100vw;
+  --mdc-protected-button-container-color: #FF6E11;
+  --mdc-protected-button-label-text-color: white;
+}
+.error-dialog-wrapper mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+}
+.error-dialog-wrapper mat-dialog-content mat-icon {
+  color: red;
+  font-size: xx-large;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*# sourceMappingURL=error.component.css.map */

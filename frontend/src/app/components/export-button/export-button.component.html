@@ -1,0 +1,5 @@
+<div class="export-button-wrapper">
+    <button mat-raised-button (click)="handleExportClick()">Export</button>
+
+    <app-loading-spinner *ngIf="exportInProgress" [displayText]="'Prebieha export dát'"></app-loading-spinner>
+</div>

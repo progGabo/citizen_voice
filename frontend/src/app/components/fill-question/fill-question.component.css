@@ -1,0 +1,65 @@
+.question-container .question-text {
+  text-align: center;
+}
+.question-container .answers-container {
+  margin-bottom: 1.5rem;
+}
+.question-container .answers-container .scale-answer {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+.question-container .answers-container .scale-answer .scale-option {
+  padding: 1rem 4rem;
+  border: 2px solid navy;
+}
+.question-container .answers-container .scale-answer .scale-option:hover {
+  cursor: pointer;
+}
+.question-container .answers-container .scale-answer .scale-option-selected {
+  background-color: #FF6E11;
+  color: white;
+}
+.question-container .answers-container .question-with-options {
+  width: 100%;
+}
+.question-container .answers-container .question-with-options .option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 5px;
+}
+.question-container .answers-container .single-answer mat-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+.question-container .answers-container .single-answer mat-radio-group .option {
+  --mdc-radio-selected-focus-icon-color: #FF6E11;
+  --mdc-radio-selected-icon-color: #FF6E11;
+  --mdc-radio-selected-focus-state-layer-color: #ff6c11b0;
+  --mdc-radio-selected-hover-icon-color: #ff6c11b0;
+  --mdc-radio-selected-pressed-state-layer-color: #ff6c11b0;
+  --mat-radio-checked-ripple-color: #FF6E11;
+}
+.question-container .answers-container .multi-answer .option {
+  --mdc-checkbox-selected-focus-icon-color: #FF6E11;
+  --mdc-checkbox-selected-icon-color: #FF6E11;
+  --mdc-checkbox-selected-focus-state-layer-color: #ff6c11b0;
+  --mdc-checkbox-selected-hover-icon-color: #ff6c11b0;
+  --mdc-checkbox-selected-pressed-state-layer-color: #ff6c11b0;
+}
+.question-container .answers-container .free-answer .answer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.question-container .answers-container .free-answer .answer mat-form-field {
+  width: 85%;
+  margin-top: 1rem;
+}
+.question-container .answers-container .free-answer .answer mat-form-field textarea {
+  resize: none;
+}
+/*# sourceMappingURL=fill-question.component.css.map */

@@ -1,0 +1,19 @@
+.error-dialog-wrapper{
+    max-width: 250px;
+    width: 100vw;
+    --mdc-protected-button-container-color: #FF6E11;
+    --mdc-protected-button-label-text-color: white;
+
+    mat-dialog-content{
+        display: flex;
+        flex-direction: column;
+        mat-icon{
+            color: red;
+            font-size: xx-large;
+            height: fit-content;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}

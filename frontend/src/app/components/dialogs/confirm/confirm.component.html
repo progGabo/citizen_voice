@@ -1,0 +1,10 @@
+<div class="confirm-dialog-wrapper">
+    <mat-dialog-content>
+      <mat-icon fontIcon="help"></mat-icon>
+      <p>{{ data.text }}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions [align]="'end'">
+      <button mat-raised-button class="highlight" (click)="onCancel()">Zrušiť</button>
+      <button mat-raised-button (click)="onConfirm()">Potvrdiť</button>
+    </mat-dialog-actions>
+  </div>

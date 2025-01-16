@@ -1,0 +1,70 @@
+main {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Roboto", "sans-serif";
+}
+main .container {
+  height: 100%;
+}
+main .container .slide-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 25px;
+  background-color: rgba(0, 0, 128, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #FF6E11;
+  z-index: 9999;
+}
+main .container mat-icon {
+  color: #FF6E11;
+  font-weight: 700;
+}
+main .container mat-icon:hover {
+  cursor: pointer;
+}
+main .container mat-drawer .sidenav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+main .container mat-drawer .sidenav-container .sidenav-content {
+  display: flex;
+  flex-direction: column;
+  color: #FF6E11;
+  margin-left: 1.5rem;
+}
+main .container mat-drawer .sidenav-container .sidenav-content p {
+  font-family: "Roboto", "sans-serif";
+}
+main .container mat-drawer .sidenav-container .sidenav-content p:hover {
+  cursor: pointer;
+}
+main .container mat-drawer .sidenav-container mat-icon {
+  transform: rotateY(180deg);
+  margin-right: 1rem;
+  margin-left: 1.5rem;
+}
+main .container mat-drawer-content {
+  height: 100%;
+}
+main .container mat-drawer-content mat-tab-group .main-carousel-container .wrapper {
+  text-align: center;
+}
+main .container mat-drawer-content mat-tab-group .main-carousel-container .wrapper h2 {
+  margin-bottom: 0;
+}
+
+:host ::ng-deep .mat-mdc-tab-header {
+  top: 76px;
+  z-index: 1000;
+  position: sticky;
+  position: -webkit-sticky;
+  background-color: #fafafa;
+}
+/*# sourceMappingURL=app.component.css.map */

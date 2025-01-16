@@ -1,0 +1,26 @@
+.comment-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .comment-header{
+        width: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-left: .5rem;
+        p{
+            font-style: italic;
+            margin-left: .5rem;
+        }
+    }
+    .comment-text{
+        width: 100%;
+        margin-left: .5rem;
+    }
+    .divider{
+        width: 100%;
+        height: 1px;
+        background-color: black;
+    }
+}

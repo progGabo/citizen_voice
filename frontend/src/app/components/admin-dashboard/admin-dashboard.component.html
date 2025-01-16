@@ -1,0 +1,30 @@
+<header>
+    <img src="assets/Logo.png">
+    <h1>Admin dashboard</h1>
+    <button mat-raised-button (click)="leave()">Odísť</button>
+</header>
+<main>
+    <h2 *ngIf="toBeVerified.length === 0">Žiaden účet nečaká na schválenie</h2>
+    <h2 *ngIf="toBeVerified.length > 0">Zoznam účtov na schválenie</h2>
+    <div *ngFor="let user of toBeVerified; index as i">
+        <div class="user-card">
+            <div class="user-info">
+                <p><b>Meno:</b> {{user.firstName}} {{user.lastName}}</p>
+                <p><b>Účet vytvorený:</b> {{formatDate(user.createdAt)}}</p>
+            </div>
+            <div class="user-actions">
+                <button mat-fab extended class="approve" (click)="activate(user.id, i)">
+                    <mat-icon>check_circle</mat-icon>
+                    Potvrdiť
+                </button>
+
+                <button mat-fab extended class="decline">
+                    <mat-icon>close</mat-icon>
+                    Zamietnúť
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+

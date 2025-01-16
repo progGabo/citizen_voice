@@ -1,0 +1,23 @@
+<div class="create-voting-survey-container">
+    <app-header></app-header>
+    <div class="main-title-container" [class.creating-survey]="isCreatingSurvey">
+        <a [href]="isCreatingSurvey ? 'javascript:void(0)' : 'create_survey'">Nový prieskum</a>
+        <span>  /  </span>
+        <a [href]="isCreatingSurvey ? 'create_voting' : 'javascript:void(0)'">Nové hlasovanie</a>
+    </div>
+    <div class="base-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Názov {{isCreatingSurvey ? 'prieskumu' : 'hlasovania'}}</mat-label>
+            <input matInput type="text" [(ngModel)]="name" />
+        </mat-form-field>
+    </div>
+    <div *ngFor="let question of allQuestions; index as i" class="questions-wrapper">
+        <app-creating-question [question]="question" [questionIdx]="i" [isCreatingSurvey]="isCreatingSurvey" (removeQuestion)="removeQuestion($event)" class="question"></app-creating-question>
+    </div>
+    <div class="add-question" (click)="addNewQuestion()">
+        <img src="assets/Add.png">
+    </div>
+    <div class="create-form-wrapper">
+        <button mat-raised-button (click)="finalizeForm()">Vytvoriť {{isCreatingSurvey ? 'prieskum' : 'hlasovanie'}}</button>
+    </div>
+</div>

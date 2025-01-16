@@ -1,0 +1,47 @@
+.questionares-wrapper{
+    margin-top: .5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .questionares-container{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .questionares-header{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            mat-icon{
+                width: 50px;
+                height: 50px;
+                font-size: 48px;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            mat-chip{
+                --mdc-chip-elevated-container-color: #FF6E11;
+                --mdc-chip-label-text-color: white;
+            }
+        }
+        .questionares-content{
+            .no-questionares{
+                text-align: center;
+            }
+            width: 100%;
+            mat-card{
+                border: 1px solid black;
+                --mdc-protected-button-container-color: rgba(0, 0, 128, 0.8);
+                --mdc-protected-button-label-text-color: white;
+                margin-top: 1.5rem;
+                mat-card-content{
+                    margin-top: .5rem;
+                }
+            }
+        }
+    }
+}

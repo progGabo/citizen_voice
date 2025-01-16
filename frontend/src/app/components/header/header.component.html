@@ -1,0 +1,36 @@
+<header>
+    <a routerLink="/home">
+        <img [src]="logoUri" alt="" class="logo" (click)="logoClickFunction()">
+    </a>
+    <div class="search-bar">
+        <mat-icon aria-hidden="false" aria-label="Search icon" fontIcon="search" (click)="handleSearchIconClick()"></mat-icon>
+        <input type="text" (input)="handleSearchChange($event)" class="input" [placeholder]="searchbarPlaceholder">
+    </div>
+    <div class="user">
+        <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="menu" class="user-button">
+            <div class="menu-button-content">
+                <img src="assets/User.png" alt="">
+                <p>{{userName}}</p>
+            </div>
+        </button>
+        <mat-menu #menu>
+            <button *ngIf="smallScreen && isAdmin" mat-menu-item (click)="addEvent()">Pridať udalosť</button>
+            <button *ngIf="smallScreen && isAdmin" mat-menu-item (click)="addArticle()">Pridať článok</button>
+            <button *ngIf="smallScreen && isAdmin" mat-menu-item (click)="createVoting()">Vytvoriť hlasovanie</button>
+            <button *ngIf="smallScreen && isAdmin" mat-menu-item (click)="createSurvey()">Vytvoriť prieskum</button>
+
+            <button mat-menu-item (click)="handleSettingsButton()">Nastavenia</button>
+            <button mat-menu-item (click)="handleLogoutButton()">Odhlásiť sa</button>
+            <button mat-menu-item (click)="toggleAdmin()">Toggle Admin mode</button>
+
+          </mat-menu>          
+        
+        <button *ngIf="!isLoggedIn" mat-raised-button (click)="handleLoginButton()">Prihlásiť sa</button>
+    </div>
+
+    <div class="mobile-search-bar">
+        <mat-icon aria-hidden="false" aria-label="Search icon" fontIcon="search" (click)="handleSearchIconClick()"></mat-icon>
+        <input type="text" (input)="handleSearchChange($event)" class="input" [placeholder]="searchbarPlaceholder">
+    </div>
+
+</header>

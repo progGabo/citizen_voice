@@ -1,0 +1,19 @@
+.articles-wrapper {
+  margin-top: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.articles-wrapper .articles-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.articles-wrapper .articles-container .articles-header {
+  display: flex;
+  justify-content: space-between;
+}
+/*# sourceMappingURL=articles.component.css.map */

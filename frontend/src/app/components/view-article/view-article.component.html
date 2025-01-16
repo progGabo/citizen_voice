@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="view-article-main">
+    <div class="article-wrapper">
+        <div class="article-header">
+            <h1>{{articleToRender.title}}</h1>
+            <div class="author-wrapper">
+                <h3>{{articleToRender.author}}</h3>
+                <mat-icon fontIcon="star" matTooltip="Uložiť článok" [class.liked]="articleLiked" (click)="likeArticle()"></mat-icon>
+            </div>
+        </div>
+        <div class="article-text-wrapper">
+            <ckeditor *ngIf="isLayoutReady" 
+                      [editor]="Editor" 
+                      (ready)="previewReady($event)" 
+                      [config]="config"/>
+        </div>
+        <div class="divider"></div>
+        <!-- <div class="comment-section">
+            <h2>Komentáre</h2>
+            <div class="comments">
+                <app-comment *ngFor="let comment of comments; index as i" 
+                             [comment]="comment" 
+                             [isAuthorComment]="comment.author === articleToRender.author"
+                             [isLastComment]="i === comments.length - 1"
+                ></app-comment>
+            </div>
+            
+        </div> -->
+    </div>
+   
+    <app-loading-spinner *ngIf="loadingInProgress" [displayText]="'Načítavam článok'"></app-loading-spinner>
+</div>

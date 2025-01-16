@@ -1,0 +1,17 @@
+<div class="fill-voting-survey-container">
+    <app-header></app-header>
+    <div *ngIf="!loading">
+        <div class="main-title-container">
+            <h3>{{questionare!.name}}</h3>
+        </div>
+        <div *ngFor="let question of questionare!.questions; index as i" class="questions-wrapper">
+            <app-fill-question class="question" [question]="question" [questionIdx]="i" [showResults]="showResults" [results]="results[i]" [animationState]="animationState"></app-fill-question>
+        </div>
+        <div class="send-form-wrapper">
+            <button *ngIf="!showResults" mat-raised-button (click)="send()">Odoslať</button>
+            <button *ngIf="showResults" mat-raised-button (click)="close()">Odísť</button>
+        </div>
+    </div>
+
+    <app-loading-spinner *ngIf="loading" [displayText]="'Načítavam ' + displayType"></app-loading-spinner>
+</div>

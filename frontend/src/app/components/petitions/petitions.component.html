@@ -1,0 +1,58 @@
+<div class="petitions-wrapper">
+    <div class="petitions-container">
+        <div class="petitions-header">
+            <div class="filter-wrapper">
+                <mat-icon fontIcon="filter_list" [matMenuTriggerFor]="menu"></mat-icon>
+                <mat-menu #menu>
+                    <button mat-menu-item (click)="sortPetitions('new')">Najnovšie</button>
+                    <button mat-menu-item (click)="sortPetitions('old')">Najstrašie</button>
+                    <button mat-menu-item (click)="sortPetitions('mostSigned')">Najviac podpísaných</button>
+                    <button mat-menu-item (click)="sortPetitions('leastSigned')">Najmenej podpísaných</button>
+                    <button mat-menu-item (click)="setShowCitySelector()">Podľa mesta</button>
+                </mat-menu>
+                <mat-chip *ngIf="lastSelectedOption.length > 0" (click)="removeFilter()">{{lastSelectedOption}}</mat-chip>
+            </div>
+            <div class="city-selector-wrapper">
+                <mat-form-field class="city-selector"  *ngIf="showCitySelector">
+                    <mat-label>Lokácia (mesto)</mat-label>
+                    <input type="text"
+                       matInput
+                       [formControl]="formControl"
+                       [matAutocomplete]="auto">
+
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getLocName">
+                        <mat-option *ngFor="let loc of filteredLocations | async" [value]="loc">{{loc.name}}</mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-icon fontIcon="close" *ngIf="showCitySelector" (click)="closeCitySelector()"></mat-icon>
+            </div>
+            <div class="create-pettion-container" (click)="createPetition()">
+                <img src="assets/Pen.png" alt="" *ngIf="isLoggedIn">
+                <h2 *ngIf="isLoggedIn">Vytvoriť petíciu</h2>
+            </div>
+        </div>
+
+        <div class="petitions-content">
+            <h1 *ngIf="pagedPetitions.length === 0 && lastSelectedOption.length === 0">Nie sú dostupné žiadne aktuality</h1>
+            <h1 *ngIf="pagedPetitions.length === 0 && lastSelectedOption.length > 0">Nie sú dostupné žiadne aktuality pre zadaný filter</h1>
+            <mat-card *ngFor="let petition of pagedPetitions" appearance="raised">
+                <mat-card-header>
+                    <mat-card-title>{{petition.title}}</mat-card-title>
+                    <mat-card-subtitle>{{petition.author}}</mat-card-subtitle>
+                </mat-card-header>
+                
+                <mat-card-actions [align]="'end'">
+                    <span class="petitions-numOfSignees">Počet podpísaných: {{petition.numberOfSignees}}</span>
+                    <button mat-raised-button (click)="handleBtnClick(petition.id)">Prejsť na petíciu</button>
+                </mat-card-actions>
+            </mat-card>              
+        </div>
+        <mat-paginator *ngIf="pagedPetitions.length > 0"
+                       [length]="petitions.length"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="[3, 5, 10]"
+                       (page)="onPageChange($event)"
+                       aria-label="Select page">
+        </mat-paginator>
+    </div>
+</div>

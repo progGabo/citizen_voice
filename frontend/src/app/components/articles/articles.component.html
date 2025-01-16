@@ -1,0 +1,35 @@
+<div class="articles-wrapper">
+    <div class="articles-container">
+        <div class="articles-header">
+            <mat-icon fontIcon="filter_list" [matMenuTriggerFor]="menu"></mat-icon>
+            <mat-menu #menu>
+                <button mat-menu-item (click)="sortArticles('new')">Najnovšie</button>
+                <button mat-menu-item (click)="sortArticles('old')">Najstrašie</button>
+                <button mat-menu-item>Najviac likeov</button>
+            </mat-menu>
+            <mat-chip *ngIf="selectedSort.length > 0" (click)="removeSort()">{{selectedSort}}</mat-chip>
+        </div>
+
+        <div class="articles-content">
+            <h1 *ngIf="pagedArticles.length === 0 && selectedSort.length === 0">Nie sú dostupné žiadne aktuality</h1>
+            <h1 *ngIf="pagedArticles.length === 0 && selectedSort.length > 0">Nie sú dostupné žiadne aktuality pre zadaný filter</h1>
+            <mat-card *ngFor="let article of pagedArticles" appearance="raised">
+                <mat-card-header>
+                    <mat-card-title>{{article.title}}</mat-card-title>
+                    <mat-card-subtitle>{{article.author}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>{{getShortenedText(article.text)}}</mat-card-content>
+                <mat-card-actions [align]="'end'">
+                    <button mat-raised-button (click)="handleBtnClick(article.id)">Prejsť na článok</button>
+                </mat-card-actions>
+            </mat-card>              
+        </div>
+        <mat-paginator *ngIf="pagedArticles.length != 0"
+                       [length]="articles.length"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="[3, 5, 10]"
+                       (page)="onPageChange($event)"
+                       aria-label="Select page">
+        </mat-paginator>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+.petitions-wrapper {
+  margin-top: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.petitions-wrapper .petitions-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.petitions-wrapper .petitions-container .petitions-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.petitions-wrapper .petitions-container .petitions-header mat-icon {
+  width: 50px;
+  height: 50px;
+  font-size: 48px;
+}
+.petitions-wrapper .petitions-container .petitions-header mat-icon:hover {
+  cursor: pointer;
+}
+.petitions-wrapper .petitions-container .petitions-header .create-pettion-container {
+  justify-self: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.petitions-wrapper .petitions-container .petitions-header .create-pettion-container img {
+  width: 30px;
+  height: 30px;
+  margin-right: 1rem;
+}
+.petitions-wrapper .petitions-container .petitions-header .create-pettion-container:hover {
+  cursor: pointer;
+}
+.petitions-wrapper .petitions-container .petitions-content {
+  width: 100%;
+}
+.petitions-wrapper .petitions-container .petitions-content mat-card {
+  border: 1px solid black;
+  --mdc-protected-button-container-color: rgba(0, 0, 128, 0.8);
+  --mdc-protected-button-label-text-color: white;
+  margin-top: 1.5rem;
+  /*   mat-card-header{
+        ::ng-deep .mat-mdc-card-header-text{
+            display: flex;
+            align-items: center;
+            mat-card-subtitle{
+                margin-left: 1.5rem;
+            }
+        }
+    } */
+}
+.petitions-wrapper .petitions-container .petitions-content mat-card mat-card-actions .petitions-numOfSignees {
+  margin-right: 2rem;
+}
+.petitions-wrapper .petitions-container .petitions-content mat-card mat-card-content {
+  margin-top: 0.5rem;
+}
+/*# sourceMappingURL=petitions.component.css.map */

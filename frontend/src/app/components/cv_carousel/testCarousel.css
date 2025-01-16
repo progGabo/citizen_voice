@@ -1,0 +1,131 @@
+.carousel-main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.carousel-wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.carousel-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.5s ease; /* Prechod pre posun */
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-slide {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  transition: 0s;
+  border: 1px solid black;
+  position: relative;
+}
+
+.animate {
+  transform: translateX(-500%);
+  transition: transform 0.5s ease;
+  flex: 0 0 1%;
+  max-height: 180px;
+  padding: 20px;
+  filter: blur(5px);
+}
+
+.next-slide {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  transform: translateX(70%);
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: -1;
+  filter: blur(5px);
+  opacity: 0.6;
+  transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+}
+
+.next-slide-animate {
+  transform: translateX(-10%);
+  filter: none;
+  opacity: 1;
+  position: relative;
+  flex: 0 0 100%;
+}
+
+.carousel-navigation {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.carousel-navigation mat-icon {
+  margin: 0 0.5rem;
+}
+.carousel-navigation mat-icon:hover {
+  cursor: pointer;
+}
+
+.carousel-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  background-color: #0056b3;
+}
+
+.dots {
+  display: flex;
+}
+.dots .dot {
+  width: 5px;
+  height: 5px;
+  border: 2px solid black;
+  border-radius: 50px;
+  margin: 0 0.25rem;
+}
+.dots .dot-full {
+  background-color: black;
+}
+
+.carousel-link {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 128, 0.8);
+  color: white;
+  border-radius: 5px;
+  align-self: flex-end;
+}
+
+.carousel-header {
+  display: flex;
+  align-items: first baseline;
+  overflow: hidden;
+}
+.carousel-header h4 {
+  margin-left: 1rem;
+  color: rgb(88, 88, 88);
+}
+/*# sourceMappingURL=testCarousel.css.map */

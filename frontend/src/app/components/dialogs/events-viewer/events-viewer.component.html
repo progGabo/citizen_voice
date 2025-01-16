@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Události</h2>
+<mat-dialog-content>
+    <mat-accordion *ngFor="let event of data.events">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{event.name}} </mat-panel-title>
+                <!-- <mat-panel-description> This is a summary of the content </mat-panel-description> -->
+            </mat-expansion-panel-header>
+            <p>{{event.description}}</p>
+            <p><b>{{event.place}}</b></p>
+            <div class="dates">
+                <div class="date">
+                    <span><b>Od</b></span>
+                    <span>-</span>
+                    <span><b>Do</b></span>
+                </div>
+                <div class="date">
+                    <span>{{getFormatedDate(event.event_from)}}</span>
+                    <span>-</span>    
+                    <span>{{getFormatedDate(event.event_to)}}</span>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+      
+</mat-dialog-content>
+<mat-dialog-actions [align]="'end'">
+  <button mat-button [mat-dialog-close]="true">Zatvoriť</button>
+</mat-dialog-actions>

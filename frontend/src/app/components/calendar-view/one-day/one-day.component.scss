@@ -1,0 +1,52 @@
+.one-day-wrapper{
+    height: 5rem;
+    width: 5rem;
+    border: 1px solid navy;
+    border-radius: 5px;
+    padding: .5rem;
+    font-weight: bold;
+    display: flex;
+    position: relative;
+    span{
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: .5rem;
+        margin-left: .5rem;
+        height: fit-content;
+    }
+    mat-icon{
+        margin: auto;
+        @media screen and (max-width: 600px) {
+            font-size: 16px;
+            height: fit-content;
+            width: fit-content;
+            
+            position: absolute;
+            bottom: 0;
+            margin-bottom: .25rem;
+            transform: translateX(75%);
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        height: 2.5rem;
+        width: 2.5rem;
+        padding: .2rem;
+    }
+}
+
+.disabled{
+    color: grey;
+    font-weight: normal;
+}
+
+.today{
+    span{
+        color: #FF6E11;
+    }
+}
+
+.hasEvent:hover{
+    cursor: pointer;
+}

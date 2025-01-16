@@ -1,0 +1,71 @@
+<main class="main">
+  <mat-drawer-container class="container" [hasBackdrop]="false">
+    <mat-drawer mode="over" [opened]="sideNavOpened" class="drawer" [style.background-color]="'rgba(255, 108, 17, 0.75)'">
+      <div class="sidenav-container">
+        <div class="sidenav-content">
+          <p>Všeobecné</p>
+          <p (click)="handleMyPetitionsButton()">Moje petície</p>
+          <p (click)="handleMyArticlesButton()">Moje aktuality</p>
+          <p (click)="handleMySurveysButton()">Moje prieskumy</p>
+          <p (click)="handleLogoutButton()">Odhlásiť sa</p>
+        </div>
+        <mat-icon aria-hidden="false" aria-label="Close Drawer" fontIcon="arrow_forward_ios" (click)="closeSideNav()"></mat-icon>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-header [(isLoggedIn)]="isLoggedIn" [logoClickFunction]="goToHomePageFunc"></app-header>
+      <div *ngIf="!sideNavOpened" class="slide-wrapper">
+        <mat-icon aria-hidden="false" aria-label="Open Drawer" fontIcon="arrow_forward_ios" (click)="openSideNav()"></mat-icon>
+      </div>
+      <section class="content">
+        <h1>Osobné údaje</h1>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline">
+            <mat-label>Meno</mat-label>
+            <input matInput formControlName="firstName" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Priezvisko</mat-label>
+            <input matInput formControlName="lastName" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Ulica a popisné číslo</mat-label>
+            <input matInput formControlName="address" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Mesto</mat-label>
+            <input matInput formControlName="city" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>PSČ</mat-label>
+            <input matInput formControlName="postalCode" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Mesto prechodného pobytu</mat-label>
+            <input matInput formControlName="temporaryStayCity">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Adresa prechodného pobytu</mat-label>
+            <input matInput formControlName="temporaryStayAddress">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>PSČ prechodného pobytu</mat-label>
+            <input matInput formControlName="temporaryStayPostalCode">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Pohlavie</mat-label>
+            <input matInput formControlName="gender">
+          </mat-form-field>
+          <div class="formBtn">
+            <button mat-raised-button color="secondary" type="submit">Zmeniť heslo</button>
+            <button mat-raised-button color="secondary" type="submit">Uložiť zmeny</button>
+          </div>
+        </form>
+      </section>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</main>

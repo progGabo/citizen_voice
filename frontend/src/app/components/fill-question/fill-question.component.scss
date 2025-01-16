@@ -1,0 +1,158 @@
+.question-container{
+    .question-text{
+        text-align: center;
+    }
+    .answers-container{
+        margin-bottom: 1.5rem;
+        .scale-answer{
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            .scale-wrapper{
+                display: flex;
+                justify-content: center;
+                @media screen and (max-width: 750px) {
+                    flex-direction: column;
+                    text-align: center;
+                    margin-bottom: 3rem;
+                }
+                .scale-option{
+                    padding: 1rem 4rem;
+                    @media screen and (max-width: 1400px) {
+                        padding: 1rem 3rem;
+                    }
+                    @media screen and (max-width: 1100px) {
+                        padding: 1rem 2rem;
+                    }
+                    border: 2px solid navy;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+                .scale-option-selected{
+                    background-color: #FF6E11;
+                    color: white;
+                }
+            }
+            .chart-wrapper{
+                width: 600px;
+                height: 300px;
+                @media screen and (max-width: 750px) {
+                    width: 300px;
+                    height: 150px;
+                }
+            }
+        }
+        .question-with-options{
+            width: 100%;
+            .option{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-left: 5%;
+                margin-right: 5%;
+                padding: 5px;
+            }
+        }
+        .single-answer{         
+            mat-radio-group{
+                display: flex;
+                flex-direction: column;
+                .option{
+                --mdc-radio-selected-focus-icon-color: #FF6E11;
+                --mdc-radio-selected-icon-color: #FF6E11;
+                --mdc-radio-selected-focus-state-layer-color: #ff6c11b0;
+                --mdc-radio-selected-hover-icon-color: #ff6c11b0;
+                --mdc-radio-selected-pressed-state-layer-color: #ff6c11b0;
+                --mat-radio-checked-ripple-color: #FF6E11;
+                --mat-radio-disabled-label-color: black;
+                --mat-radio-label-text-color: black;
+                --mdc-radio-disabled-selected-icon-opacity: 1;
+                --mdc-radio-disabled-unselected-icon-opacity: 1;
+                }
+            }
+            .single-choice-wrapper{
+                border: 1px solid black;
+                border-radius: 25px;
+                margin-left: 5%;
+                margin-right: 5%;
+                margin-bottom: 2px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                .option{
+                    margin: 0;
+                    z-index: 5;
+                }
+                .percentage{
+                    margin-right: 2.5%;
+                    z-index: 5;
+                }
+                .background{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    border-radius: 25px;
+                    background-color: rgba(255, 110, 17, 0.8);
+                }
+            }
+           
+        }
+        .multi-answer{
+            .multiple-choice-wrapper{
+                border: 1px solid black;
+                margin-left: 5%;
+                margin-right: 5%;
+                margin-bottom: 2px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                
+                 // angular material themes send help pls
+                 --mdc-checkbox-selected-focus-icon-color: #FF6E11;
+                 --mdc-checkbox-selected-icon-color: #FF6E11;
+                 --mdc-checkbox-selected-focus-state-layer-color: #ff6c11b0;
+                 --mdc-checkbox-selected-hover-icon-color: #ff6c11b0;
+                 --mdc-checkbox-selected-pressed-state-layer-color: #ff6c11b0;  
+                 // showing results styling for disabled checkboxes
+                 --mdc-checkbox-disabled-selected-icon-color: black;
+                 --mdc-checkbox-disabled-unselected-icon-color: black;
+                 --mat-checkbox-disabled-label-color: black;
+
+                .option{
+                    margin: 0;
+                    z-index: 5;
+                }
+                .percentage{
+                    margin-right: 2.5%;
+                    z-index: 5;
+                }
+                .background{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    background-color: rgba(255, 110, 17, 0.8);
+                }
+            }
+        }
+        .free-answer{
+            .answer{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                mat-form-field{
+                    width: 85%;
+                    margin-top: 1rem;
+                    textarea{
+                        resize: none;
+                    }
+                }
+                --mdc-filled-text-field-disabled-input-text-color: black;
+            }
+        }
+    }
+}

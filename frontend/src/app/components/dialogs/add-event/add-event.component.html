@@ -1,0 +1,45 @@
+<div class="dialog-wrapper">
+    <h2 mat-dialog-title>Pridávanie události</h2>
+    <mat-dialog-content>
+        <form action="" [formGroup]="formGroup">
+            <mat-form-field appearance="fill">
+                <label>Názov události</label>
+                <input matInput type="text" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                 <mat-label>Lokácia (mesto)</mat-label>
+                    <input type="text"
+                       matInput
+                       [formControl]="formControl"
+                       formControlName="location"
+                       [matAutocomplete]="auto">
+
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getLocName">
+                        <mat-option *ngFor="let loc of filteredLocations | async" [value]="loc">{{loc.name}}</mat-option>
+                    </mat-autocomplete>
+
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Popis události</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+                
+            <mat-form-field>
+                <label>Začiatok</label>
+                <input matInput type="datetime-local" formControlName="date_from">
+            </mat-form-field>
+            <mat-form-field>
+                <label>Koniec</label>
+                <input matInput type="datetime-local" formControlName="date_to">
+            </mat-form-field>
+
+            
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions [align]="'end'">
+        <button mat-button [mat-dialog-close]="true">Zrušiť</button>
+        <button mat-raised-button (click)="validate()">Potvrdiť</button>
+    </mat-dialog-actions>
+</div>

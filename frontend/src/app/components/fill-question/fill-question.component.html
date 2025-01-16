@@ -1,0 +1,94 @@
+<div class="question-container">
+    <div class="question-text">
+        <h2>{{questionIdx + 1}}.  {{question.questionText}} {{question.optional ? '' : '*'}}</h2>
+    </div>
+
+    <div class="answers-container">
+        <div *ngIf="question.questionType === 0" class="single-answer question-with-options"> <!-- single choice -->
+            <mat-radio-group [(ngModel)]="selectedOption">
+                <div class="single-choice-wrapper" *ngFor="let answer of question.answers; index as i">
+                    <div class="background" [@resizeBackground]="{value: animationState, params: {finalWidth: getWidthString(results[i])}}"></div>
+                    
+                    <!-- filling out  -->
+                    <mat-radio-button *ngIf="!showResults" 
+                                      class="option" 
+                                      (click)="selectSingleOption(i)" 
+                                      value="i">
+                        {{answer.answerText}}
+                    </mat-radio-button>    
+                    
+                    <!-- showing results -->
+                    <mat-radio-button *ngIf="showResults && answer.selected" 
+                                      disabled 
+                                      class="option" 
+                                      value="i" 
+                                      [checked]="true">
+                        {{answer.answerText}}
+                    </mat-radio-button>
+                    <mat-radio-button *ngIf="showResults && !answer.selected" 
+                                      disabled 
+                                      class="option">
+                        {{answer.answerText}}
+                    </mat-radio-button>
+                    <span *ngIf="showResults" class="percentage">{{results[i]}}%</span>
+
+                </div>
+               
+            </mat-radio-group>        
+        </div>
+        <div *ngIf="question.questionType === 1" class="multi-answer question-with-options"> <!-- multiple choice -->
+            <div class="multiple-choice-wrapper" *ngFor="let answer of question.answers; index as i">
+                <div class="background" [@resizeBackground]="{value: animationState, params: {finalWidth: getWidthString(results[i])}}"></div>
+
+                <!-- filling out -->
+                <mat-checkbox *ngIf="!showResults" 
+                              [disableRipple]="true" 
+                              (click)="selectMultipleOption(i)">
+                    {{answer.answerText}}
+                </mat-checkbox>
+
+                <!-- showing results -->
+                <mat-checkbox *ngIf="showResults && answer.selected" 
+                              disabled 
+                              [disableRipple]="true" 
+                              [checked]="true">
+                    {{answer.answerText}}
+                </mat-checkbox>
+                <mat-checkbox *ngIf="showResults && !answer.selected" 
+                              disabled 
+                              [disableRipple]="true">
+                    {{answer.answerText}}
+                </mat-checkbox>
+                <span *ngIf="showResults" class="percentage">{{results[i]}}% / 100%</span>
+
+            </div>
+        </div>
+        <div *ngIf="question.questionType === 2" class="scale-answer"> <!-- scale -->
+            <div *ngIf="!showResults" class="scale-wrapper">
+                <div *ngFor="let answer of question.answers; index as i" class="scale-option" (click)="selectScaleOption(i)" [class.scale-option-selected]="answer.selected">
+                    {{i + 1}}
+                </div>    
+            </div>
+            <div *ngIf="showResults" class="chart-wrapper">
+                <canvas baseChart
+                        [data]="graphsData"
+                        [options]="chartOptions"
+                        [type]="'bar'"
+                ></canvas>
+            </div>
+        </div>
+        <div *ngIf="question.questionType === 3" class="free-answer"> <!-- free answer -->
+            <div class="answer">
+                <mat-form-field *ngIf="!showResults" appearance="fill">
+                    <mat-label>Voľná odpoveď</mat-label>
+                    <textarea matInput [(ngModel)]="question.answers[0].answerText"></textarea>
+                </mat-form-field>
+
+                <mat-form-field *ngIf="showResults" appearance="fill">
+                    <mat-label>Voľná odpoveď</mat-label>
+                    <textarea matInput disabled [(ngModel)]="question.answers[0].answerText"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>

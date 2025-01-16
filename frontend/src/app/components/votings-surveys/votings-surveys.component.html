@@ -1,0 +1,34 @@
+<div class="questionares-wrapper">
+    <div class="questionares-container">
+        <div class="questionares-header">
+            <mat-icon fontIcon="filter_list" [matMenuTriggerFor]="menu"></mat-icon>
+            <mat-menu #menu>
+                <button mat-menu-item (click)="handleFilterChange('voting')">Hlasovania</button>
+                <button mat-menu-item (click)="handleFilterChange('survey')">Prieskumy</button>
+            </mat-menu>
+            <mat-chip *ngIf="filterText.length > 0" (click)="removeFilter()">{{filterText}}</mat-chip>
+        </div>
+
+        <div class="questionares-content">
+            <div class="no-questionares" *ngIf="questionares.length === 0">
+                <h2>Nie sú dostupné žiadne hlasovania a prieskumy</h2>
+            </div>
+            <mat-card *ngFor="let questionare of pagedQuestionares" appearance="raised">
+                <mat-card-header>
+                    <mat-card-title>{{questionare.name}}</mat-card-title>
+                    <mat-card-subtitle>{{questionare.authorName}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions [align]="'end'">
+                    <button mat-raised-button (click)="handleBtnClick(questionare.id, questionare.type)">Prejsť na {{questionare.type === 0 ? 'prieskum' : 'hlasovanie'}}</button>
+                </mat-card-actions>
+            </mat-card>              
+        </div>
+        <mat-paginator *ngIf="questionares.length > 0"
+                       [length]="questionares.length"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="[3, 5, 10]"
+                       (page)="onPageChange($event)"
+                       aria-label="Select page">
+        </mat-paginator>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<main class="main">
+    <mat-drawer-container class="container" [hasBackdrop]="false">
+        <mat-drawer mode="over" [opened]="sideNavOpened" class="drawer" [style.background-color]="'rgba(255, 108, 17, 0.75)'">
+            <div class="sidenav-container">
+                <div class="sidenav-content">
+                    <p (click)="handleSettingsButton()">Všeobecné</p>
+                    <p (click)="handleMyPetitionsButton()">Moje petície</p>
+                    <p (click)="handleMyArticlesButton()">Moje aktuality</p>
+                    <p >Moje prieskumy</p>
+                    <p (click)="handleLogoutButton()">Odhlásiť sa</p>
+                </div>
+                <mat-icon aria-hidden="false" aria-label="Close Drawer" fontIcon="arrow_forward_ios" (click)="closeSideNav()"></mat-icon>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content>
+            <app-header [(isLoggedIn)]="isLoggedIn" [logoClickFunction]="goToHomePageFunc"></app-header>
+            <div *ngIf="!sideNavOpened" class="slide-wrapper">
+                <mat-icon aria-hidden="false" aria-label="Open Drawer" fontIcon="arrow_forward_ios" (click)="openSideNav()"></mat-icon>
+            </div>
+            <section class="content">
+                <div class="surveys-content">
+                    <div class="surveys-header">
+                        <div class="switchable-headers">
+                            <h2 [class.active] = 'renderingSurvey' (click)="handleSwitch('survey')">Moje prieskumy</h2>
+                            <h2>/</h2>
+                            <h2 [class.active] = '!renderingSurvey' (click)="handleSwitch('voting')">Moje hlasovania</h2>
+                        </div>
+                        <div class="tab-links">
+                            <a (click)="handleAllSurveysButton()">Všetky</a> |
+                            <a (click)="handleActiveSurveysButton()">Aktuálne</a> |
+                            <a (click)="handleInactiveSurveysButton()">Archív</a>
+                        </div>
+                    </div>
+
+                    <div *ngIf="pagedSurveys.length > 0; else noSurveys">
+                        <mat-card *ngFor="let surveysItem of pagedSurveys" class="surveys-card">
+                            <mat-card-header>
+                                <mat-card-title>{{ surveysItem.name }}</mat-card-title>
+                                <mat-card-subtitle>{{ surveysItem.id }}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <!--<span class="surveys-author">Autor: {{ surveysItem.author | date }}</span> -->
+                            </mat-card-content>
+                            <mat-card-actions align="end">
+                                <button mat-raised-button (click)="handleBtnClick(surveysItem.id)">Detail</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+
+                    <ng-template #noSurveys>
+                        <p>Žiadne {{this.renderingSurvey ? 'prieskumy' : 'hlasovania' }} nie sú k dispozícii.</p>
+                    </ng-template>
+
+                    <mat-paginator [length]="surveys.length"
+                                   [pageSize]="pageSize"
+                                   [pageSizeOptions]="[3, 5, 10]"
+                                   (page)="onPageChange($event)">
+                    </mat-paginator>
+                </div>
+            </section>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</main>

@@ -1,0 +1,11 @@
+<div class="success-dialog-wrapper">
+    <h2 mat-dialog-title>Úspech</h2>
+    <mat-dialog-content>
+      <mat-icon fontIcon="check_circle"></mat-icon>
+      <p>{{ data.text }}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions [align]="'end'">
+      <button mat-raised-button mat-dialog-close>{{data.confirmButtonText || "Vrátiť sa domov"}}</button>
+      <button *ngIf="data.secondButtonString && data.secondButtonString.length > 0" mat-raised-button [mat-dialog-close]="'showResults'">{{data.secondButtonString}}</button>
+    </mat-dialog-actions>
+  </div>

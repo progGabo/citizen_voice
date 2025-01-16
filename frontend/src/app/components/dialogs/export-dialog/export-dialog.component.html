@@ -1,0 +1,17 @@
+<div class="export-dialog-wrapper">
+    <h2 mat-dialog-title>{{data.title}}</h2>
+    <mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Formát</mat-label>
+            <mat-select [(value)]="result.format">
+                <mat-option value="csv">CSV</mat-option>
+                <mat-option value="pdf">PDF</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-checkbox *ngIf="data.showCheckbox" [(ngModel)]="result.all">Stiahnúť aj textové odpovede</mat-checkbox>
+    </mat-dialog-content>
+    <mat-dialog-actions [align]="'end'">
+      <button mat-raised-button mat-dialog-close>Zatvoriť</button>
+      <button mat-raised-button class="primary" (click)="close()">Potvrdiť</button>
+    </mat-dialog-actions>
+  </div>

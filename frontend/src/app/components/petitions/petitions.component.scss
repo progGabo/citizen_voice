@@ -1,0 +1,93 @@
+.petitions-wrapper{
+    margin-top: .5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .petitions-container{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .petitions-header{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 20% 15% 65%;
+            align-items: center;
+            mat-icon{
+                width: 50px;
+                height: 50px;
+                font-size: 48px;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            .filter-wrapper{
+                display: flex;
+                justify-content: left;
+                align-items: center;
+            }
+            .create-pettion-container{
+                justify-self: end;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 1rem;
+                }
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            .city-selector-wrapper{
+                display: flex;
+                align-items: center;
+                ::ng-deep .mat-mdc-form-field-subscript-wrapper{
+                    display: none;
+                }
+                mat-icon{
+                    width: fit-content;
+                    height: fit-content;
+                    font-size: xx-large;
+                    margin-left: .25rem;
+                }
+            }
+            mat-chip{
+                --mdc-chip-elevated-container-color: #FF6E11;
+                --mdc-chip-label-text-color: white;
+            }
+        }
+        .petitions-content{
+            width: 100%;
+            h1{
+                text-align: center;
+            }
+            mat-card{
+                border: 1px solid black;
+                --mdc-protected-button-container-color: rgba(0, 0, 128, 0.8);
+                --mdc-protected-button-label-text-color: white;
+                margin-top: 1.5rem;
+              /*   mat-card-header{
+                    ::ng-deep .mat-mdc-card-header-text{
+                        display: flex;
+                        align-items: center;
+                        mat-card-subtitle{
+                            margin-left: 1.5rem;
+                        }
+                    }
+                } */
+                mat-card-actions{
+                    .petitions-numOfSignees{
+                        margin-right: 2rem;
+                    }
+                }
+                mat-card-content{
+                    margin-top: .5rem;
+                }
+            }
+        }
+    }
+}

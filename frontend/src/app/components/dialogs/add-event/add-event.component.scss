@@ -1,0 +1,17 @@
+.dialog-wrapper{
+    --mdc-protected-button-container-color: rgba(0, 0, 128, 0.8);
+    --mdc-protected-button-label-text-color: white;
+    padding: 1rem;
+    mat-dialog-content{
+        form{
+            display: flex;
+            flex-direction: column;
+            mat-form-field{
+                textarea{
+                    resize: none;
+                }
+            }
+       }
+    }
+
+}

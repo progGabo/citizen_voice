@@ -1,0 +1,51 @@
+.calendar-view-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 600px) {
+        justify-content: unset;
+    }
+    .calendar-view-container{
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 2rem;
+        margin-top: 2rem;
+
+        @media screen and (max-width: 600px) {
+            padding: .5rem;
+        }
+
+        .calendar-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mat-icon{
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            .calendar-header-selection{
+                @media screen and (max-width: 600px) {
+                    display: grid;
+                    grid-template-columns: repeat(2, auto);
+                    mat-form-field{
+                        grid-column: 1 / span 2;
+                    }
+                }
+            }
+        }
+        .calendar-days{
+            display: grid;
+            grid-template-columns: repeat(7, auto);
+            gap: .5rem;
+            .day-of-week{
+                justify-self: center;
+            }
+            @media screen and (max-width: 600px){
+                gap: .1rem;
+            }
+        }
+    }
+}
